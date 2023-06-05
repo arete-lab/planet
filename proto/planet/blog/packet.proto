@@ -17,6 +17,7 @@ message NoData {}
 message IbcPostPacketData {
   string title   = 1;
   string content = 2;
+  string creator = 3;
 }
 
 // IbcPostPacketAck defines a struct for the packet acknowledgment

@@ -3,9 +3,10 @@ package keeper
 import (
 	"context"
 
+	"planet/x/blog/types"
+
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	clienttypes "github.com/cosmos/ibc-go/v6/modules/core/02-client/types"
-	"planet/x/blog/types"
 )
 
 func (k msgServer) SendIbcPost(goCtx context.Context, msg *types.MsgSendIbcPost) (*types.MsgSendIbcPostResponse, error) {
@@ -18,6 +19,7 @@ func (k msgServer) SendIbcPost(goCtx context.Context, msg *types.MsgSendIbcPost)
 
 	packet.Title = msg.Title
 	packet.Content = msg.Content
+	packet.Creator = msg.Creator
 
 	// Transmit the packet
 	_, err := k.TransmitIbcPostPacket(

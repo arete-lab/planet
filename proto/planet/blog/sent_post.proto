@@ -9,5 +9,4 @@ message SentPost {
   string title = 3; 
   string chain = 4; 
   string creator = 5; 
-  
 }
