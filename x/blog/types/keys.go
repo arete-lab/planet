@@ -33,3 +33,8 @@ const (
 	PostKey      = "Post/value/"
 	PostCountKey = "Post/count/"
 )
+
+const (
+	SentPostKey      = "SentPost/value/"
+	SentPostCountKey = "SentPost/count/"
+)

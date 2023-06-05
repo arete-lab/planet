@@ -7,6 +7,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "planet/blog/params.proto";
 import "planet/blog/post.proto";
+import "planet/blog/sent_post.proto";
 
 option go_package = "planet/x/blog/types";
 
@@ -26,6 +27,16 @@ service Query {
   }
   rpc PostAll (QueryAllPostRequest) returns (QueryAllPostResponse) {
     option (google.api.http).get = "/planet/blog/post";
+  
+  }
+  
+  // Queries a list of SentPost items.
+  rpc SentPost    (QueryGetSentPostRequest) returns (QueryGetSentPostResponse) {
+    option (google.api.http).get = "/planet/blog/sent_post/{id}";
+  
+  }
+  rpc SentPostAll (QueryAllSentPostRequest) returns (QueryAllSentPostResponse) {
+    option (google.api.http).get = "/planet/blog/sent_post";
   
   }
 }
@@ -53,6 +64,23 @@ message QueryAllPostRequest {
 
 message QueryAllPostResponse {
   repeated Post                                   Post       = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetSentPostRequest {
+  uint64 id = 1;
+}
+
+message QueryGetSentPostResponse {
+  SentPost SentPost = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllSentPostRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllSentPostResponse {
+  repeated SentPost                               SentPost   = 1 [(gogoproto.nullable) = false];
            cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 
