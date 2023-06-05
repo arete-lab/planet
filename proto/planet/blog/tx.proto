@@ -1,0 +1,7 @@
+syntax = "proto3";
+package planet.blog;
+
+option go_package = "planet/x/blog/types";
+
+// Msg defines the Msg service.
+service Msg {}
